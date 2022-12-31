@@ -1,6 +1,6 @@
 package com.example.web;
 
-import com.example.Repository.PersonRepository;
+import com.example.repository.PersonRepository;
 import com.example.domain.Person;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;

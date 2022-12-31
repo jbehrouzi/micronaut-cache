@@ -1,4 +1,4 @@
-package com.example.Repository;
+package com.example.repository;
 
 import com.example.domain.Person;
 import io.micronaut.data.annotation.Repository;

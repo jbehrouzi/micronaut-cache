@@ -6,10 +6,10 @@ micronaut:
 
 datasources:
   default:
-    url: ${ORACLE_DATASOURCE_URL:`jdbc:oracle:thin:@192.168.165.191:1521/confirmation`}
-    username: ${ORACLE_DATASOURCE_USERNAME:confirmation}
-    password: ${ORACLE_DATASOURCE_PASSWORD:confirmation}
-    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:h2:mem:mhip;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ''
+    driverClassName: org.h2.Driver
 jpa:
   default:
     properties:
@@ -23,7 +23,7 @@ jpa:
           use_second_level_cache: true
         show_sql: true
         hbm2ddl:
-          auto: ${HIBERNATE_DDL_AUTO:create}
+          auto: ${HIBERNATE_DDL_AUTO:update}
 netty:
   default:
     allocator:
