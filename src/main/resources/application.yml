@@ -1,0 +1,41 @@
+micronaut:
+  application:
+    name: cache
+  server:
+    port: 8091
+
+datasources:
+  default:
+    url: ${ORACLE_DATASOURCE_URL:`jdbc:oracle:thin:@192.168.165.191:1521/confirmation`}
+    username: ${ORACLE_DATASOURCE_USERNAME:confirmation}
+    password: ${ORACLE_DATASOURCE_PASSWORD:confirmation}
+    driver-class-name: oracle.jdbc.OracleDriver
+jpa:
+  default:
+    properties:
+      hibernate:
+        javax:
+          cache.missing_cache_strategy: create
+          persistence:
+            sharedCache:
+              mode: ENABLE_SELECTIVE
+        cache:
+          use_second_level_cache: true
+        #          hazelcast:
+        #            use_native_client: true
+        #            native_client_address: localhost:5701
+        show_sql: true
+        hbm2ddl:
+          auto: ${HIBERNATE_DDL_AUTO:create}
+netty:
+  default:
+    allocator:
+      max-order: 3
+cif:
+  cache:
+    redis: # Redis configuration
+      expiration: 3600 # By default objects stay 1 hour (in seconds) in the cache
+      server: redis://localhost:6379
+      cluster: false
+      # server: redis://localhost:6379,redis://localhost:16379,redis://localhost:26379
+      # cluster: true
